@@ -1,0 +1,23 @@
+@use "../abstracts/" as *;
+
+.day{
+    position: relative;
+    width: 11.7rem;
+    h3{
+        margin-inline: 2.25rem;
+    }
+}
+
+.lines{
+    text-align: center;
+ // gives line to the end of item
+    &:after,&:before{
+        @include inline-lines();
+    }
+
+    &:after{
+      right: 0;
+    }
+}
+
+

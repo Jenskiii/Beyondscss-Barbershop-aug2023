@@ -1,12 +1,12 @@
 .flow > *:where(:not(:first-child)){
-    margin-top: var(--flow-space,1rem);
+    margin-top: var(--flow-space,1.31rem);
 }
 
 .flow-medium > *:where(:not(:first-child)){
-    margin-top: var(--flowMedium-space, 2rem);
+    margin-top: var(--flowMedium-space, 3.75rem);
 }
 
-.page-flow > *:where(:not(:first-child)){
-    margin-top: var(--pageflow-space,7.5rem);
+.flow-large > *:where(:not(:first-child)){
+    margin-top: var(--pageflow-space,min(5.19rem));
 }
 

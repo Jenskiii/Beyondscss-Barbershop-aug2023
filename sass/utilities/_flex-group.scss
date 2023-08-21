@@ -1,4 +1,13 @@
-.flex{
+@use '../abstracts/' as *;
+
+.flex-group {
     display: flex;
-    gap: var(--gap, 1rem);
-}
+    flex-wrap: wrap;
+    column-gap: var(--flex-column-gap, $flex-group-gap);
+    row-gap: var(--flex-row-gap, calc($flex-group-gap / 2));
+    width: fit-content;
+  }
+  
+  .flex-group.mx-auto {
+    justify-content: center;
+  }

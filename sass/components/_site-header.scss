@@ -1,0 +1,27 @@
+@use "../abstracts/" as *;
+.site__header{
+    $parent:&;
+    background-color: $site-header-background-color;
+    color: $site-header-color;
+    padding: $site-header-padding;
+    flex-direction: row;
+
+    &__layout{
+        display: flex;
+        margin: $side-header-margin;
+        justify-content: $site-header-justification;
+        align-items: $site-header-alignment;
+    }
+
+    @include mq(medium,max){
+        #{$parent}__layout{
+            flex-direction: column;
+
+            & > *{
+                margin-inline: auto;
+            }
+        }
+           
+
+    }
+}

@@ -1,12 +1,17 @@
 @use "sass:meta";
 @use "sass:math";
 @use "sass:map";
+@use "typography" as *;
+@use "tokens" as *;
 @use "breakpoints" as *;
+@use "colors" as *;
+@use "sizes" as *;
 
-@mixin mq($size) {
+
+@mixin mq($size,$min-max:min) {
   @if map.has-key($breakpoints, $size) {
     $breakpoint: map-get($breakpoints, $size);
-    @media screen and (min-width: $breakpoint) {
+    @media screen and (#{$min-max}-width: $breakpoint) {
       @content;
     }
   } @else if meta.type-of($size) == number {
@@ -20,4 +25,27 @@
   } @else {
     @error 'the keyword #{$size} is not in the $breakpoints map';
   }
+}
+
+@mixin heading($fs, $color: $heading-color-default) {
+  font-size: $fs;
+  color: $color;
+
+  font-family: $heading-font-family;
+  text-transform: $heading-text-transform;
+  letter-spacing: $heading-letter-spacing;
+  font-weight: $heading-font-weight;
+  line-height: $heading-line-height;
+}
+
+@mixin inline-lines(){
+  content: "";
+  display: block;
+  position: absolute;
+  height: $size-5;
+  width: .06rem;
+  background-color: $color-primary-700;
+  opacity: .5;
+  align-self: center;
+  top: 10px;
 }

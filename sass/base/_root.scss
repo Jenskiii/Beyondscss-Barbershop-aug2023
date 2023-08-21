@@ -1,0 +1,37 @@
+@use "../abstracts/" as *;
+/////////////////////////////////////////////////////
+//  costum properties always needs interpolation !!!!
+/////////////////////////////////////////////////////
+:root {
+    @each $color, $shade-map in $colors {
+      @each $shade, $value in $shade-map {
+        --#{$color}-#{$shade}: #{$value};
+      }
+    }
+  }
+
+
+  // will make costum property for fonts
+  // will also loop make a mediaquery for them based on size "small", "medium", "large"
+  :root{
+    // loops through screen sizes
+    @each $screen-size,$size-map in $font-sizes{
+        // small screens
+        @if $screen-size == small {
+            @each $size-name, $size-value in $size-map {
+                --fs-#{$size-name}: #{$size-value};
+            }
+        }
+
+        //  medium and screen
+        // $screen-size will print out a mediaquery for both/remaining groups
+        @else{
+            @include mq($screen-size){
+            @each $size-name, $size-value in $size-map {
+                --fs-#{$size-name}: #{$size-value};
+            }
+          }
+        }
+
+    }
+}

@@ -1,3 +1,58 @@
-body{
-    background-color: darkgray;
+@use "../abstracts/" as *;
+// section hero
+.hero{
+    $parent:&;
+
+    &__information{
+        align-self: center;
+    }
+
+    &__buttons{
+        --flex-column-gap: 1.3rem;
+        --flex-row-gap: 1.3rem;
+    }
+    img{
+        justify-self: end;
+    }
+    @include mq(medium,max){
+       &__content{
+            text-align: center;
+            margin-inline: auto;
+
+            #{$parent}__buttons{
+                margin-inline: auto;
+                justify-content: center;
+            }
+            img{
+                margin-top: 2.5rem;
+                justify-self: center;
+            }
+        }
+    }
+}
+
+// services
+.services{
+    .grid-auto-fit {
+        gap: $size-7;
+    }
+
+}
+
+// hours
+.hours{
+    .schedule{
+        --flex-column-gap:0;
+    }
+}
+
+// price
+.price__wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3.75rem 9rem;
+
+    @include mq(small,max){
+        grid-template-columns: 1fr;
+    }
 }
